@@ -11,9 +11,10 @@ namespace ScreenSound
          { 1, new MenuBandRegister() },
          { 2, new MenuAlbumRegister() },
          { 3, new MenuShowAllBands() },
-         { 4, new MenuBandAvaliate() },
-         { 5, new MenuShowDetails() },};
-
+         { 4, new MenuRateBand() },
+         { 5, new MenuRateAlbum() },
+         { 6, new MenuShowDetails() },};
+        
         internal void StartExecution() => InitialMenu();
         internal void InitialMenu()
         {
@@ -23,7 +24,8 @@ namespace ScreenSound
             Console.WriteLine("Type 2 to register an album");
             Console.WriteLine("Type 3 to show all bands");
             Console.WriteLine("Type 4 to rate a band");
-            Console.WriteLine("Type 5 details of a band");
+            Console.WriteLine("Type 5 to rate an album");
+            Console.WriteLine("Type 6 details of a band");
             Console.WriteLine("Type -1 to leave");
             Console.Write("\nType your option: ");
 

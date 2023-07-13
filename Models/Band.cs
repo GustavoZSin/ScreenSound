@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ScreenSound.Models
 {
-    internal class Band
+    internal class Band : IAssessable
     {
-        public static Dictionary<string, Band> BandList = new Dictionary<string, Band>();
+        public static Dictionary<string, Band> bandList = new Dictionary<string, Band>();
 
         public List<Album> Albums = new List<Album>();
 
-        private List<Avaliation> BandsAvaliation = new List<Avaliation>();
+        private List<Avaliation> bandsAvaliation = new List<Avaliation>();
         public string BandName { get; set; }
 
         //TODO adicionar tratativa para evitar que ocorra quebra no código ao exibir uma nota de banda inexistente
@@ -20,8 +20,8 @@ namespace ScreenSound.Models
         {
             get
             {
-                if (BandsAvaliation.Count < 0) return 0;
-                else return BandsAvaliation.Average(a => a.Rate);
+                if (bandsAvaliation.Count <= 0) return 0;
+                else return bandsAvaliation.Average(a => a.Rate);
             }
         }
         public Band(string bandName)
@@ -29,7 +29,7 @@ namespace ScreenSound.Models
             BandName = bandName;
         }
 
-        public void AddAvaliation(Avaliation avaliation) => BandsAvaliation.Add(avaliation);
+        public void AddAvaliation(Avaliation avaliation) => bandsAvaliation.Add(avaliation);
         public void AddAlbum(Album album) => Albums.Add(album);
     }
 }

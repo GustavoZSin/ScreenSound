@@ -10,15 +10,21 @@ namespace ScreenSound.Menus
         }
         internal void ShowBandDetails()
         {
-            ShowSubtitleSection("Average Rating");
-
-            Console.Write("Type the band that you want to know the average rate: ");
+            ShowSubtitleSection("Details of Band");
+            
+            Console.Write("Type the band that you want to know more: ");
             string bandName = Console.ReadLine()!;
 
-            if (Band.BandList.ContainsKey(bandName))
+            if (Band.bandList.ContainsKey(bandName))
             {
-                Band band = Band.BandList[bandName];
+                Band band = Band.bandList[bandName];
                 Console.Write($"The average rating to the band {band.BandName} is {band.Average}");
+
+                Console.Write($"\nDiscography:");
+                foreach(Album album in band.Albums)
+                {
+                    Console.WriteLine($"Album '{album.AlbumName}' -> {album.Average}");
+                }
 
                 base.Execute();
             }
@@ -37,9 +43,9 @@ namespace ScreenSound.Menus
             Console.Write("Type the band that you want to show the discography: ");
             string bandName = Console.ReadLine()!;
 
-            if (Band.BandList.ContainsKey(bandName))
+            if (Band.bandList.ContainsKey(bandName))
             {
-                Band band = Band.BandList[bandName];
+                Band band = Band.bandList[bandName];
                 Console.WriteLine($"Discography of the band {band.BandName}:");
 
                 foreach (Album album in band.Albums)

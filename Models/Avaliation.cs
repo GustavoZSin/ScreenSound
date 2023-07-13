@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ScreenSound.Models
 {
-    internal class Avaliation
+    public class Avaliation
     {
         public int Rate { get; set; }
         public Avaliation(int rate)

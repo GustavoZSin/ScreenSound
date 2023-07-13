@@ -10,17 +10,17 @@ namespace ScreenSound.Menus
         }
         private void RegisterAlbum()
         {
-            ShowSubtitleSection("Band Register");
+            ShowSubtitleSection("Album Register");
 
             Console.Write("Type the band name that you want to register the album: ");
             string bandName = Console.ReadLine()!;
 
-            if (Band.BandList.ContainsKey(bandName))
+            if (Band.bandList.ContainsKey(bandName))
             {
                 Console.Write("Type the name of the album that you want to register: ");
                 string albumName = Console.ReadLine()!;
 
-                Band band = Band.BandList[bandName];
+                Band band = Band.bandList[bandName];
                 band.AddAlbum(new Album(albumName));
 
                 Console.WriteLine($"Album '{albumName}' from '{bandName}' was successfully registered.");

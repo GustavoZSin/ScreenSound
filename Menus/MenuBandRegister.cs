@@ -15,9 +15,9 @@ namespace ScreenSound.Menus
             Console.Write("Type the band name that you want to register: ");
             string bandName = Console.ReadLine()!;
 
-            if (!Band.BandList.ContainsKey(bandName))
+            if (!Band.bandList.ContainsKey(bandName))
             {
-                Band.BandList.Add(bandName, new Band(bandName));
+                Band.bandList.Add(bandName, new Band(bandName));
                 Console.WriteLine($"{bandName} was successfully registered.");
             }
             else

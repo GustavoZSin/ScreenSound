@@ -6,25 +6,40 @@ using System.Threading.Tasks;
 
 namespace ScreenSound.Models
 {
-    public class Album
+    public class Album : IAssessable
     {
         public Album(string albumName)
         {
             AlbumName = albumName;
         }
-        internal List<Music> MusicsOfTheAlbum = new List<Music>();
+        internal List<Music> musicsOfTheAlbum = new List<Music>();
+        private List<Avaliation> avaliations = new();
         public string AlbumName { get; set; }
-        public int TotalDuration => MusicsOfTheAlbum.Sum(m => m.DurationTime);
+        public int TotalDuration => musicsOfTheAlbum.Sum(m => m.DurationTime);
 
-        public void AddSongToAlbum(Music song) => MusicsOfTheAlbum.Add(song);
+        public double Average
+        {
+            get
+            {
+                if (avaliations.Count == 0) return 0;
+                else return avaliations.Average(a => a.Rate);
+            }
+        }
+
+        public void AddSongToAlbum(Music song) => musicsOfTheAlbum.Add(song);
         public void ShowAlbumSongs()
         {
             Console.WriteLine($"List of musics of the album {AlbumName}:\n");
-            foreach (Music song in MusicsOfTheAlbum)
+            foreach (Music song in musicsOfTheAlbum)
             {
                 Console.WriteLine($"Music: {song.MusicName}");
             }
             Console.WriteLine($"\nTo listening this album, you'll need {TotalDuration} minutes");
+        }
+
+        public void AddAvaliation(Avaliation rate)
+        {
+            avaliations.Add(rate);
         }
     }
 }

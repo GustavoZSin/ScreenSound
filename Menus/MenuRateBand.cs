@@ -2,7 +2,7 @@
 
 namespace ScreenSound.Menus
 {
-    internal class MenuBandAvaliate : Menu
+    internal class MenuRateBand : Menu
     {
         internal override void Execute()
         {
@@ -15,9 +15,9 @@ namespace ScreenSound.Menus
             Console.Write("Type the band that you want to rate: ");
             string bandToReview = Console.ReadLine()!;
 
-            if (Band.BandList.ContainsKey(bandToReview))
+            if (Band.bandList.ContainsKey(bandToReview))
             {
-                Band band = Band.BandList[bandToReview];
+                Band band = Band.bandList[bandToReview];
 
                 Console.Write($"What's your rating to the band {bandToReview}? ");
                 Avaliation rating = Avaliation.Parse(Console.ReadLine()!);
@@ -32,6 +32,5 @@ namespace ScreenSound.Menus
                 base.Execute();
             }
         }
-
     }
 }

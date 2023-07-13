@@ -17,7 +17,7 @@ namespace ScreenSound.Menus
         {
             ShowSubtitleSection("List Of Bands");
 
-            foreach (string band in Band.BandList.Keys)
+            foreach (string band in Band.bandList.Keys)
             {
                 Console.WriteLine($"Band: {band}");
             }
